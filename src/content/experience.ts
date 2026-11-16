@@ -1,0 +1,69 @@
+import type { Role } from "./types";
+
+export const experience: Role[] = [
+  {
+    period: "Sep 2025 – Now",
+    type: "Full time",
+    title: "Software Engineer",
+    company: "CentraLogic",
+    highlights: [
+      "Built a cross-platform Font Management app for web and Electron with React, TypeScript, GraphQL, and Redux, localized into 6 languages.",
+      "Improved app responsiveness by moving heavy background work into Web Workers and Service Workers.",
+      "Designed offline-first storage with IndexedDB, and real-time desktop state that combines API data with live event streams.",
+      "Improved accessibility with keyboard navigation, focus management, and screen-reader-friendly interactions.",
+      "Owned key modules end to end as Module Owner, from technical design and release planning to production fixes, held to SonarQube quality gates.",
+      "Mentored junior developers through code reviews and design discussions, and worked with product, design, and backend teams to turn requirements into solutions.",
+    ],
+    stack: [
+      "React",
+      "TypeScript",
+      "Electron",
+      "GraphQL",
+      "Redux",
+      "IndexedDB",
+      "Web Workers",
+      "i18n",
+      "SonarQube",
+      "Jenkins",
+      "GitHub Actions",
+    ],
+  },
+  {
+    period: "Aug 2024 – Sep 2025",
+    type: "Full time",
+    title: "Full Stack Engineer",
+    company: "CloudOptimo",
+    highlights: [
+      "Architected and built a scalable web app on the Carbon Design System, with a focus on consistency, accessibility, and performance.",
+      "Engineered a Document Management System with real time status tracking, team assignments, and secure file handling.",
+      "Built APIs with Java for an Inventory Management System.",
+      "Integrated Keycloak authentication with role based access control.",
+      "Worked with backend developers on Java and MySQL to keep data integration smooth.",
+      "Migrated an app to Next.js, improving scalability, SEO, and load performance.",
+      "Built a cost calculator for AWS EC2 and Azure VMs so teams can analyze and optimize cloud spend.",
+    ],
+    stack: ["Next.js", "Carbon Design System", "Keycloak", "Java", "MySQL"],
+  },
+  {
+    period: "Aug 2023 – Feb 2024",
+    type: "Internship",
+    title: "Full Stack Engineer Intern",
+    company: "Edifition",
+    highlights: [
+      "Built a comprehensive web page with Next.js, React, Tailwind CSS, and Framer Motion alongside a small team.",
+      "Added a CMS to streamline content updates.",
+      "Set up a PostgreSQL database with Drizzle ORM.",
+      "Optimized application performance, resulting in a 3x improvement.",
+    ],
+    stack: ["Next.js", "React", "PostgreSQL", "Drizzle ORM"],
+  },
+  {
+    period: "Ongoing",
+    type: "Open source",
+    title: "Contributor",
+    company: "Cal.com",
+    summary:
+      "Contributing fixes and features to Cal.com, an open source scheduling platform with a large TypeScript codebase.",
+    stack: ["TypeScript", "Next.js"],
+  },
+];

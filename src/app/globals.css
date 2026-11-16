@@ -1,0 +1,366 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   Design tokens. Change colours here; every component follows.
+   ------------------------------------------------------------------ */
+:root {
+  --bg: #faf7f2;
+  --card: #f5f2eb;
+  --line: #e7e5e4;
+  --line-strong: #d6d3d1;
+  --text: #1c1917;
+  --muted: #78716c;
+  --body: #44403c;
+  --accent: #c2410c;
+  --on-accent: #fff7ed;
+  --accent-soft: rgb(194 65 12 / 0.12);
+  --moss: #15803d;
+  --header-blur: rgb(250 247 242 / 0.85);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f0e0b;
+    --card: #191714;
+    --line: #2b2824;
+    --line-strong: #44403c;
+    --text: #f5f2eb;
+    --muted: #a8a29e;
+    --body: #d6d3d1;
+    --accent: #fd6b36;
+    --on-accent: #1c1917;
+    --accent-soft: rgb(253 107 54 / 0.14);
+    --moss: #79db8d;
+    --header-blur: rgb(15 14 11 / 0.8);
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #0f0e0b;
+  --card: #191714;
+  --line: #2b2824;
+  --line-strong: #44403c;
+  --text: #f5f2eb;
+  --muted: #a8a29e;
+  --body: #d6d3d1;
+  --accent: #fd6b36;
+  --on-accent: #1c1917;
+  --accent-soft: rgb(253 107 54 / 0.14);
+  --moss: #79db8d;
+  --header-blur: rgb(15 14 11 / 0.8);
+  color-scheme: dark;
+}
+
+/* Expose the tokens to Tailwind: bg-card, text-muted, font-head, ... */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-card: var(--card);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-ink: var(--text);
+  --color-muted: var(--muted);
+  --color-body: var(--body);
+  --color-accent: var(--accent);
+  --color-on-accent: var(--on-accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-moss: var(--moss);
+
+  --font-sans: var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-head: var(--font-space-grotesk), system-ui, sans-serif;
+  --font-serif: var(--font-instrument-serif), Georgia, serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+}
+
+@theme {
+  --ease-expo: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --animate-marquee: marquee 38s linear infinite;
+  --animate-marquee-reverse: marquee-reverse 38s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-dot: pulse-dot 2s ease-in-out infinite;
+  --animate-blink: blink 1s steps(1) infinite;
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @keyframes marquee-reverse {
+    from {
+      transform: translateX(-50%);
+    }
+    to {
+      transform: none;
+    }
+  }
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-12px);
+    }
+  }
+  @keyframes pulse-dot {
+    0%,
+    100% {
+      opacity: 1;
+      box-shadow: 0 0 0 0 color-mix(in srgb, var(--moss) 50%, transparent);
+    }
+    50% {
+      opacity: 0.7;
+      box-shadow: 0 0 0 6px transparent;
+    }
+  }
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 96px;
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 26px;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+  p,
+  li {
+    text-wrap: pretty;
+  }
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Motion helpers used by components in src/components/motion.
+   ------------------------------------------------------------------ */
+@keyframes rise {
+  to {
+    transform: none;
+  }
+}
+@keyframes fade-up {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@layer components {
+  /* Hero headline: each line slides up from behind a mask. */
+  .line-mask {
+    display: block;
+    overflow: hidden;
+    padding-bottom: 0.1em;
+  }
+  .line-rise {
+    display: inline-block;
+    transform: translateY(105%);
+    animation: rise 1s var(--ease-expo) forwards;
+    animation-delay: calc(var(--i, 0) * 110ms + 150ms);
+  }
+
+  /* Fades in on page load, after --delay. */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(16px);
+    animation: fade-up 0.9s var(--ease-expo) forwards;
+    animation-delay: var(--delay, 0ms);
+  }
+
+  /* Scroll reveal. Hidden only once JavaScript has started (data-js),
+     so server-rendered content stays visible without it. */
+  [data-js] .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition:
+      opacity 0.9s var(--ease-expo),
+      transform 0.9s var(--ease-expo);
+    transition-delay: var(--delay, 0ms);
+  }
+  [data-js] .reveal.is-in {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Tagline: words light up one by one while scrolling. */
+  [data-js] .tagline-word {
+    opacity: 0.18;
+    transition: opacity 0.5s var(--ease-expo);
+  }
+  [data-js] .tagline-word.is-on {
+    opacity: 1;
+  }
+
+  /* Card glow that follows the cursor. */
+  .spotlight::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      400px circle at var(--mx, 50%) var(--my, 0%),
+      var(--accent-soft),
+      transparent 60%
+    );
+    opacity: 0;
+    transition: opacity 0.4s var(--ease-expo);
+    pointer-events: none;
+  }
+  .spotlight:hover::before {
+    opacity: 1;
+  }
+
+  /* Outlined footer wordmark. */
+  .wordmark {
+    color: transparent;
+    -webkit-text-stroke: 1px var(--line-strong);
+    transition: color 0.8s var(--ease-expo);
+  }
+  .wordmark:hover {
+    color: var(--card);
+  }
+  .wordmark sup {
+    -webkit-text-stroke: 0;
+    color: var(--accent);
+  }
+
+  /* Theme toggle icons follow the active theme without JavaScript. */
+  .theme-sun {
+    display: none;
+  }
+  :root[data-theme="dark"] .theme-sun {
+    display: block;
+  }
+  :root[data-theme="dark"] .theme-moon {
+    display: none;
+  }
+
+  /* Long-form article typography for blog posts. */
+  .prose-article {
+    font-size: 18px;
+    line-height: 30px;
+    color: var(--body);
+  }
+  .prose-article > * + * {
+    margin-top: 24px;
+  }
+  .prose-article h2 {
+    margin-top: 56px;
+    font-family: var(--font-head);
+    font-size: 30px;
+    line-height: 36px;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    color: var(--text);
+  }
+  .prose-article h3 {
+    margin-top: 40px;
+    font-family: var(--font-head);
+    font-size: 22px;
+    line-height: 28px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+  .prose-article a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .prose-article ul,
+  .prose-article ol {
+    padding-left: 22px;
+    display: grid;
+    gap: 8px;
+  }
+  .prose-article ul {
+    list-style: disc;
+  }
+  .prose-article ol {
+    list-style: decimal;
+  }
+  .prose-article li::marker {
+    color: var(--accent);
+  }
+  .prose-article code {
+    font-family: var(--font-mono);
+    font-size: 0.85em;
+    padding: 2px 6px;
+    border-radius: 6px;
+    border: 1px solid var(--line);
+    background: var(--card);
+    color: var(--text);
+  }
+  .prose-article pre {
+    overflow-x: auto;
+    padding: 20px 24px;
+    border-radius: 16px;
+    border: 1px solid var(--line);
+    background: var(--card);
+    font-size: 14px;
+    line-height: 24px;
+  }
+  .prose-article pre code {
+    padding: 0;
+    border: 0;
+    background: none;
+    font-size: inherit;
+  }
+  .prose-article blockquote {
+    padding-left: 20px;
+    border-left: 2px solid var(--accent);
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 24px;
+    line-height: 32px;
+    color: var(--text);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-sun {
+    display: block;
+  }
+  :root:not([data-theme="light"]) .theme-moon {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+  .line-rise,
+  .fade-up {
+    transform: none;
+    opacity: 1;
+  }
+  [data-js] .reveal {
+    transform: none;
+  }
+}
