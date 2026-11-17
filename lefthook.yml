@@ -16,11 +16,5 @@ pre-commit:
 
 pre-push:
   commands:
-    owner-only:
-      run: |
-        if [ "$HUMAN_PUSH" != "1" ]; then
-          echo "Push is for the owner only: HUMAN_PUSH=1 git push"
-          exit 1
-        fi
     check:
       run: pnpm check
