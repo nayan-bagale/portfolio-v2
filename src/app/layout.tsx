@@ -20,12 +20,14 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image", title: site.title, description: site.description },
 };
 
+/* eslint-disable no-restricted-syntax -- the browser theme-color meta tag cannot read CSS tokens */
 export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#faf7f2" },
     { media: "(prefers-color-scheme: dark)", color: "#0f0e0b" },
   ],
 };
+/* eslint-enable no-restricted-syntax */
 
 // Runs before first paint: applies the saved theme and marks that JavaScript is on.
 const bootScript = `try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}document.documentElement.dataset.js="1"`;

@@ -1,5 +1,6 @@
 # CLAUDE.md
 
+@GUARDRAILS.md
 @AGENTS.md
 
 ## Claude-specific notes

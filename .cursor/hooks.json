@@ -1,0 +1,7 @@
+{
+  "version": 1,
+  "hooks": {
+    "beforeShellExecution": [{ "command": ".agents/guardrails/guard-bash.sh" }],
+    "beforeReadFile": [{ "command": ".agents/guardrails/guard-paths.sh" }]
+  }
+}

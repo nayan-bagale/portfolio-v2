@@ -3,6 +3,9 @@
 Instructions for AI coding agents (Cursor, Codex/ChatGPT, Claude) working in this repository.
 Claude Code reads this through `CLAUDE.md`.
 
+**Read `GUARDRAILS.md` first.** Its rules come from the owner, are non-negotiable and override everything else
+(no GitHub commands, no deleting, no leaving this folder, no creating files before approval).
+
 ## Project
 
 Personal portfolio and blog of Nayan Bagale.
@@ -16,9 +19,29 @@ pnpm dev         # local server on :3000
 pnpm build       # production build (must pass before finishing a task)
 pnpm lint        # ESLint, must report nothing
 pnpm typecheck   # tsc --noEmit
+pnpm check       # lint + typecheck + build, run this before finishing
 ```
 
 Use pnpm only. Do not add npm or yarn lockfiles.
+
+## Automated checks (guardrails)
+
+These run for every agent and every human, whatever the model or editor.
+
+| Where                           | What it does                                                                |
+| ------------------------------- | --------------------------------------------------------------------------- |
+| `GUARDRAILS.md`                 | The owner's safety rules for every agent                                    |
+| `.agents/guardrails/*.sh`       | Hook scripts: block or ask before risky commands and file access            |
+| `.claude/settings.json`         | Claude Code: guard hooks, deny rules, sandbox, lint after each edit         |
+| `.cursor/hooks.json`            | Cursor: the same guard scripts for shell and file reads                     |
+| `.cursor/rules/project.mdc`     | Cursor: points to `GUARDRAILS.md` and this file                             |
+| `eslint.config.mjs`             | Blocks wrong layer imports, `dark:` classes and hex colours (rules 1, 3, 4) |
+| `lefthook.yml`                  | pre-commit: guardrail files, lint, typecheck. pre-push: owner only + check  |
+| `.github/workflows/ci.yml`      | Lint, typecheck and build on every push and PR                              |
+
+If a check or hook blocks you, fix the code or ask the owner. Do not disable a rule, skip a hook (`--no-verify`)
+or rephrase a command to get past it.
+The only allowed exception is `themeColor` in `src/app/layout.tsx`, which cannot read CSS tokens.
 
 ## Read before changing code
 

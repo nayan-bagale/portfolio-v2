@@ -1,0 +1,26 @@
+# Git hooks. Installed by `pnpm install` (prepare script). See GUARDRAILS.md.
+pre-commit:
+  commands:
+    guardrail-files:
+      run: |
+        if [ "$ALLOW_GUARDRAIL_EDIT" != "1" ] && git diff --cached --name-only | grep -Eq '^(\.claude/|\.cursor/|\.agents/|\.github/|lefthook\.yml|eslint\.config\.mjs|GUARDRAILS\.md|\.gitignore)'; then
+          echo "Guardrail files changed. Only the owner may commit this: ALLOW_GUARDRAIL_EDIT=1 git commit"
+          exit 1
+        fi
+    lint:
+      glob: "*.{ts,tsx,js,mjs}"
+      run: pnpm lint
+    typecheck:
+      glob: "*.{ts,tsx}"
+      run: pnpm typecheck
+
+pre-push:
+  commands:
+    owner-only:
+      run: |
+        if [ "$HUMAN_PUSH" != "1" ]; then
+          echo "Push is for the owner only: HUMAN_PUSH=1 git push"
+          exit 1
+        fi
+    check:
+      run: pnpm check
