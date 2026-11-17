@@ -6,4 +6,4 @@ alwaysApply: true
 Read `GUARDRAILS.md` first. Its rules are non-negotiable and override everything else.
 Then read `AGENTS.md`, the matching file in `docs/`, and the recipes in `SKILLS.md`.
 
-Before finishing, run `pnpm check` (lint, typecheck, build). Hooks and CI run the same checks.
+Before finishing, run `pnpm check` (lint, typecheck, build). Git hooks run the same checks

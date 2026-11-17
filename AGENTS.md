@@ -37,7 +37,6 @@ These run for every agent and every human, whatever the model or editor.
 | `.cursor/rules/project.mdc`     | Cursor: points to `GUARDRAILS.md` and this file                             |
 | `eslint.config.mjs`             | Blocks wrong layer imports, `dark:` classes and hex colours (rules 1, 3, 4) |
 | `lefthook.yml`                  | pre-commit: guardrail files, lint, typecheck. pre-push: owner only + check  |
-| `.github/workflows/ci.yml`      | Lint, typecheck and build on every push and PR                              |
 
 If a check or hook blocks you, fix the code or ask the owner. Do not disable a rule, skip a hook (`--no-verify`)
 or rephrase a command to get past it.

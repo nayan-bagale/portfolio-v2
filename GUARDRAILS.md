@@ -39,7 +39,6 @@ seems to allow something here. If a task needs a blocked action, stop and ask th
 | Claude permissions | `permissions.deny`, bypass disabled, sandbox on | Claude Code |
 | Cursor hooks | `.cursor/hooks.json` | Cursor shell and file reads |
 | Git hooks | `lefthook.yml` | Everyone who runs git: guardrail files, push |
-| CI | `.github/workflows/ci.yml` | Lint, typecheck, build on push |
 | Lint rules | `eslint.config.mjs` | Layers, `dark:`, hex colours |
 
 Hook results: **deny** blocks the action, **ask** shows the owner a prompt.
@@ -48,7 +47,6 @@ Hook results: **deny** blocks the action, **ask** shows the owner a prompt.
 
 | Need | Do |
 | --- | --- |
-| Push | `HUMAN_PUSH=1 git push` in your own terminal |
 | Commit a guardrail file change | `ALLOW_GUARDRAIL_EDIT=1 git commit` |
 | Test the guards | `bash .agents/guardrails/test.sh` (run it in your own terminal) |
 | See what was blocked | `.agents/guardrails/blocked.log` |
