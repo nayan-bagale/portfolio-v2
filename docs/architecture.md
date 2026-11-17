@@ -21,36 +21,40 @@ src/
   app/                      Routing only
     layout.tsx              <html>, fonts, metadata, SiteHeader, <main>, SiteFooter, BackToTop
     globals.css             Tokens, Tailwind theme, motion helper classes, article typography
-    page.tsx                /            → HomeTemplate
-    blog/page.tsx           /blog        → BlogIndexTemplate
-    blog/[slug]/page.tsx    /blog/<slug> → ArticleTemplate (local posts only)
+    page.tsx                /            → HomePage
+    blog/page.tsx           /blog        → BlogIndexPage
+    blog/[slug]/page.tsx    /blog/<slug> → ArticlePage (local posts only)
     not-found.tsx           404
     icon.svg                Favicon
-  components/
-    atoms/                  No project components inside them
-    molecules/              Built from atoms
-    organisms/              Page sections and site chrome
-    templates/              Arrangement of organisms for a page
+  components/               Shared, reusable across modules
+    ui/                     Small building blocks (Button, Pill, Icon, Container ...)
+    layout/                 Site chrome and shared sections (header, footer, ContactSection)
     motion/                 Client-only animation wrappers
+  modules/                  One folder per feature or page
+    home/                   HomePage.tsx, components/ (Hero, sections, cards), index.ts
+    blog/                   BlogIndexPage.tsx, ArticlePage.tsx, components/, index.ts
   content/                  Typed text and data
+  lib/                      cn(), fonts, icon paths
   lib/                      cn(), fonts, icon paths
 public/                     Static files (portrait)
 docs/                       These documents
 ```
 
 Path alias: `@/*` → `src/*`. Each component folder has an `index.ts` barrel; import from the barrel
-(`@/components/atoms`), not from the file.
+(`@/components/ui`, `@/modules/blog`), not from the file.
 
-## Layering rule
+## Import rule
 
-```
-atoms → molecules → organisms → templates → app
-          ↑ motion (usable from molecules upward)
-content and lib are usable from every layer
-```
+| Folder        | May import                                                      |
+| ------------- | --------------------------------------------------------------- |
+| `app`         | `modules`, `components`, `content`, `lib`                       |
+| `modules`     | `components`, `content`, `lib`, and another module's `index.ts` only |
+| `components`  | `lib`, `content` (never `modules`)                              |
+| `lib`         | nothing from the project                                        |
 
-A file may import only from layers to its left. `app/` pages contain no markup beyond choosing a template
-and passing data.
+Inside `components`: `ui` is the base, `layout` and `motion` may use `ui`; `ui` never imports `layout`.
+Inside a module, files import their own folder with relative paths. `app/` pages contain no markup beyond
+choosing a page component and passing data.
 
 ## Rendering model
 
@@ -61,9 +65,9 @@ and passing data.
 
   | Component                 | Reason                                         |
   | ------------------------- | ---------------------------------------------- |
-  | `organisms/SiteHeader`    | scroll state, active link, mobile menu         |
-  | `organisms/BackToTop`     | scroll state                                   |
-  | `molecules/ThemeToggle`   | click handler, localStorage                    |
+  | `layout/SiteHeader`       | scroll state, active link, mobile menu         |
+  | `layout/BackToTop`        | scroll state                                   |
+  | `layout/ThemeToggle`      | click handler, localStorage                    |
   | `motion/Reveal`           | IntersectionObserver                           |
   | `motion/WordReveal`       | IntersectionObserver                           |
   | `motion/Spotlight`        | pointer position                               |

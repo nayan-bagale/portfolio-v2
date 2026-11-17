@@ -2,35 +2,53 @@ import { defineConfig, globalIgnores } from "eslint/config";
 import nextVitals from "eslint-config-next/core-web-vitals";
 import nextTs from "eslint-config-next/typescript";
 
-// Atomic layers import one way only: atoms -> molecules -> organisms -> templates -> app.
+// Folders import one way only: app -> modules -> components -> lib.
 // See AGENTS.md rule 1 and docs/architecture.md.
-const forbidden = (names, message) => ({
-  patterns: [
-    {
-      group: names.flatMap((n) => [`@/components/${n}`, `@/components/${n}/*`, `**/${n}`, `**/${n}/*`]),
-      message,
-    },
-  ],
-});
-const layerRule = (dir, names) => ({
-  files: [`src/components/${dir}/**/*.{ts,tsx}`],
+const rule = (files, groups) => ({
+  files,
   rules: {
     "no-restricted-imports": [
       "error",
-      forbidden(names, `${dir} must not import from ${names.join(", ")} (AGENTS.md rule 1).`),
+      {
+        patterns: groups.map(({ group, message }) => ({ group, message })),
+      },
     ],
   },
 });
+
+const noModules = {
+  group: ["@/modules", "@/modules/*"],
+  message: "components must not import from modules (AGENTS.md rule 1).",
+};
+const noLayout = {
+  group: ["@/components/layout", "@/components/layout/*"],
+  message: "ui and motion must not import from layout (AGENTS.md rule 1).",
+};
+const noUi = {
+  group: ["@/components/ui", "@/components/ui/*"],
+  message: "motion must not import from ui (AGENTS.md rule 1).",
+};
+const noMotion = {
+  group: ["@/components/motion", "@/components/motion/*"],
+  message: "ui must not import from motion (AGENTS.md rule 1).",
+};
+const noModuleInternals = (other) => ({
+  group: [`@/modules/${other}/*`],
+  message: `Import another module only through its index.ts: "@/modules/${other}".`,
+});
+
 
 export default defineConfig([
   ...nextVitals,
   ...nextTs,
   globalIgnores([".next/**", "out/**", "build/**", "next-env.d.ts"]),
 
-  layerRule("atoms", ["molecules", "organisms", "templates", "motion"]),
-  layerRule("molecules", ["organisms", "templates"]),
-  layerRule("organisms", ["templates"]),
-  layerRule("motion", ["atoms", "molecules", "organisms", "templates"]),
+    rule(["src/components/ui/**/*.{ts,tsx}"], [noModules, noLayout, noMotion]),
+  rule(["src/components/layout/**/*.{ts,tsx}"], [noModules]),
+  rule(["src/components/motion/**/*.{ts,tsx}"], [noModules, noLayout, noUi]),
+  rule(["src/modules/home/**/*.{ts,tsx}"], [noModuleInternals("blog")]),
+  rule(["src/modules/blog/**/*.{ts,tsx}"], [noModuleInternals("home")]),
+
 
   // AGENTS.md rules 3 and 4: no hard-coded colours, no Tailwind dark: variant.
   {

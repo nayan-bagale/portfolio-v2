@@ -1,4 +1,4 @@
-import { Container, Kicker } from "@/components/atoms";
+import { Container, Kicker } from "@/components/ui";
 import { WordReveal } from "@/components/motion";
 import { tagline } from "@/content/home";
 

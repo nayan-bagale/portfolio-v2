@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { Container, Kicker } from "@/components/atoms";
-import { ContactSection } from "@/components/organisms";
+import { Container, Kicker } from "@/components/ui";
+import { ContactSection } from "@/components/layout";
 
 type Props = {
   title: string;
@@ -13,7 +13,7 @@ type Props = {
 };
 
 /** Reading layout for a single blog post. */
-export function ArticleTemplate({ title, topic, date, summary, children }: Props) {
+export function ArticlePage({ title, topic, date, summary, children }: Props) {
   return (
     <>
       <article className="pt-40 pb-28">

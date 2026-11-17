@@ -7,3 +7,5 @@ export { Logo } from "./Logo";
 export { Pill, type PillTone } from "./Pill";
 export { PulseDot } from "./PulseDot";
 export { SectionTitle } from "./SectionTitle";
+export { PillList } from "./PillList";
+export { SocialLinks } from "./SocialLinks";

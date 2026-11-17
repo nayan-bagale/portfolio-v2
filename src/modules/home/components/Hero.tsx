@@ -1,6 +1,8 @@
 import type { CSSProperties } from "react";
-import { Accent, Button, Container, PulseDot } from "@/components/atoms";
-import { CodeCard, FloatingChip, SocialLinks } from "@/components/molecules";
+import { Accent, Button, Container, PulseDot } from "@/components/ui";
+import { SocialLinks } from "@/components/ui";
+import { CodeCard } from "./CodeCard";
+import { FloatingChip } from "./FloatingChip";
 import { hero } from "@/content/home";
 import { contactHref, socials } from "@/content/site";
 

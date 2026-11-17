@@ -3,8 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Button, Logo, PulseDot } from "@/components/atoms";
-import { ThemeToggle } from "@/components/molecules";
+import { Button, Logo, PulseDot } from "@/components/ui";
+import { ThemeToggle } from "./ThemeToggle";
 import { contactHref, nav, site } from "@/content/site";
 import { cn } from "@/lib/cn";
 

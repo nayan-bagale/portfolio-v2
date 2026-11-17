@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { Container } from "@/components/atoms";
-import { SocialLinks } from "@/components/molecules";
+import { Container } from "@/components/ui";
+import { SocialLinks } from "@/components/ui";
 import { site, socials } from "@/content/site";
 
 /** Footer with social links and the large outlined wordmark. */

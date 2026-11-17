@@ -1,5 +1,6 @@
-import { Accent, Container } from "@/components/atoms";
-import { RoleCard, SectionHeader } from "@/components/molecules";
+import { Accent, Container } from "@/components/ui";
+import { RoleCard } from "./RoleCard";
+import { SectionHeader } from "./SectionHeader";
 import { Reveal } from "@/components/motion";
 import { experience } from "@/content/experience";
 

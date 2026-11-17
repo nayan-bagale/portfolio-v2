@@ -1,5 +1,6 @@
-import { Accent, Container } from "@/components/atoms";
-import { ProjectCard, SectionHeader } from "@/components/molecules";
+import { Accent, Container } from "@/components/ui";
+import { ProjectCard } from "./ProjectCard";
+import { SectionHeader } from "./SectionHeader";
 import { Reveal } from "@/components/motion";
 import { projects } from "@/content/projects";
 

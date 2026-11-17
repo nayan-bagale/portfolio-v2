@@ -1,7 +1,7 @@
-import { Icon } from "@/components/atoms";
+import { Icon } from "@/components/ui";
 import type { SkillGroup } from "@/content/types";
 import { cn } from "@/lib/cn";
-import { PillList } from "./PillList";
+import { PillList } from "@/components/ui";
 
 /** One skill group. `featured` fills the card with the accent colour. */
 export function SkillCard({ skill, index }: { skill: SkillGroup; index: number }) {

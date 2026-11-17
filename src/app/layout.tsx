@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
-import { BackToTop, SiteFooter, SiteHeader } from "@/components/organisms";
+import { BackToTop, SiteFooter, SiteHeader } from "@/components/layout";
 import { site } from "@/content/site";
 import { fontVariables } from "@/lib/fonts";
 import "./globals.css";

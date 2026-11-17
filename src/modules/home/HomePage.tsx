@@ -1,5 +1,5 @@
+import { ContactSection } from "@/components/layout";
 import {
-  ContactSection,
   ExperienceSection,
   Hero,
   MarqueeBand,
@@ -7,10 +7,10 @@ import {
   SkillsSection,
   TaglineSection,
   WritingSection,
-} from "@/components/organisms";
+} from "./components";
 
 /** Section order of the home page. */
-export function HomeTemplate() {
+export function HomePage() {
   return (
     <>
       <Hero />

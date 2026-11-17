@@ -1,5 +1,6 @@
-import { Accent, Button, Container } from "@/components/atoms";
-import { PostRow, SectionHeader } from "@/components/molecules";
+import { Accent, Button, Container } from "@/components/ui";
+import { PostRow } from "@/modules/blog";
+import { SectionHeader } from "./SectionHeader";
 import { Reveal } from "@/components/motion";
 import { posts } from "@/content/posts";
 

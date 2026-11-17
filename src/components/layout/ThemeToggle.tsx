@@ -1,6 +1,6 @@
 "use client";
 
-import { Icon } from "@/components/atoms";
+import { Icon } from "@/components/ui";
 
 /** Switches between light and dark, and remembers the choice. */
 export function ThemeToggle() {

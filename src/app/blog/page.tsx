@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { BlogIndexTemplate } from "@/components/templates";
+import { BlogIndexPage } from "@/modules/blog";
 import { posts } from "@/content/posts";
 
 export const metadata: Metadata = {
@@ -8,5 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function BlogPage() {
-  return <BlogIndexTemplate posts={posts} />;
+  return <BlogIndexPage posts={posts} />;
 }

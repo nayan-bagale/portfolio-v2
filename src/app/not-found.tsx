@@ -1,4 +1,4 @@
-import { Accent, Button, Container, Kicker, SectionTitle } from "@/components/atoms";
+import { Accent, Button, Container, Kicker, SectionTitle } from "@/components/ui";
 
 export default function NotFound() {
   return (

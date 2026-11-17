@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { Kicker, SectionTitle } from "@/components/atoms";
+import { Kicker, SectionTitle } from "@/components/ui";
 import { Reveal } from "@/components/motion";
 
 type Props = {

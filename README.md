@@ -23,17 +23,18 @@ src/
     page.tsx              Home
     blog/page.tsx         Blog index
     blog/[slug]/page.tsx  Article page for posts written in this project
-  components/
-    atoms/                Smallest pieces: Button, Pill, Kicker, Accent, Icon ...
-    molecules/            Atoms combined: RoleCard, ProjectCard, PostRow, CodeCard ...
-    organisms/            Whole sections: Hero, SiteHeader, SkillsSection ...
-    templates/            Page layouts: HomeTemplate, BlogIndexTemplate, ArticleTemplate
+  components/             Shared across modules
+    ui/                   Button, Pill, Kicker, Accent, Icon, PillList, SocialLinks ...
+    layout/               SiteHeader, SiteFooter, BackToTop, ThemeToggle, ContactSection
     motion/               Client-side animation wrappers: Reveal, Spotlight, WordReveal
+  modules/                One folder per feature or page
+    home/                 HomePage, Hero, sections and cards
+    blog/                 BlogIndexPage, ArticlePage, PostRow, ArticleBody
   content/                All text and data, typed. Edit here, not in components.
   lib/                    cn(), fonts, icon paths
 ```
 
-Import direction is one way: atoms → molecules → organisms → templates → app.
+Import direction is one way: app → modules → components → lib.
 
 ## Common changes
 
@@ -45,7 +46,7 @@ Import direction is one way: atoms → molecules → organisms → templates →
 | Edit hero, tagline, contact | `src/content/home.ts`                           |
 | Add a job / skill / project | `experience.ts`, `skills.ts`, `projects.ts`     |
 | Add an article              | `src/content/posts.ts`                          |
-| Reorder home sections       | `src/components/templates/HomeTemplate.tsx`     |
+| Reorder home sections       | `src/modules/home/HomePage.tsx`                 |
 
 ## Docs for people and AI agents
 
@@ -65,9 +66,9 @@ Import direction is one way: atoms → molecules → organisms → templates →
 
 - **External article** (Medium, etc.): set `href`. It opens in a new tab.
 - **Article written here**: set `slug` and `body`. It is served at `/blog/<slug>`
-  using `ArticleTemplate`, with typography from the `.prose-article` class.
+  using `ArticlePage`, with typography from the `.prose-article` class.
 
-`ArticleTemplate` accepts any children, so the `body` blocks can later be swapped
+`ArticlePage` accepts any children, so the `body` blocks can later be swapped
 for MDX without touching the layout.
 
 ## Still placeholders

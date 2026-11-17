@@ -1,10 +1,10 @@
-import { Accent, Container, Kicker, SectionTitle } from "@/components/atoms";
-import { PostRow } from "@/components/molecules";
-import { ContactSection } from "@/components/organisms";
+import { Accent, Container, Kicker, SectionTitle } from "@/components/ui";
+import { PostRow } from "./components";
+import { ContactSection } from "@/components/layout";
 import type { Post } from "@/content/types";
 
 /** List of all articles. */
-export function BlogIndexTemplate({ posts }: { posts: Post[] }) {
+export function BlogIndexPage({ posts }: { posts: Post[] }) {
   return (
     <>
       <section className="pt-40 pb-28">

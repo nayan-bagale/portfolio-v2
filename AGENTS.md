@@ -54,8 +54,9 @@ The only allowed exception is `themeColor` in `src/app/layout.tsx`, which cannot
 
 ## Rules that are easy to get wrong
 
-1. **Atomic layers import one way only:** `atoms → molecules → organisms → templates → app`.
-   A layer never imports from a layer to its right. `motion/` may be imported by molecules and above.
+1. **Folders import one way only:** `app → modules → components → lib`.
+   `components/` (`ui`, `layout`, `motion`) never imports from `modules/`, and `ui` never imports `layout`.
+   A module imports another module only through its `index.ts`.
 2. **No copy in components.** All text and data live in `src/content/*.ts`, typed by `src/content/types.ts`.
 3. **Never hard-code a colour.** Use token classes (`bg-card`, `text-muted`, `border-line`, `text-accent`).
    Hex values belong only in the `:root` blocks of `src/app/globals.css`.
@@ -65,7 +66,7 @@ The only allowed exception is `themeColor` in `src/app/layout.tsx`, which cannot
    smallest possible component (see `src/components/motion/` and `ThemeToggle`).
 6. **Reuse before creating.** Check `docs/components.md`. A new variant is a prop on the existing
    component, not a copy of it.
-7. **Do not override an atom's `display` or `max-width` through `className`.** `cn()` only joins strings and
+7. **Do not override a ui component's `display` or `max-width` through `className`.** `cn()` only joins strings and
    does not resolve Tailwind conflicts. Use the component's prop (`<Container size="narrow">`) or a wrapper element.
 8. **Motion:** easing is always `ease-expo`. Never use the default `ease`/`linear` for UI transitions.
    Scroll reveals use `<Reveal>`; do not attach scroll listeners for animation.

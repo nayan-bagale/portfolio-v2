@@ -79,9 +79,9 @@ Article hosted on this site:
 
 - The page is generated at build time and gets its `<title>` and description from the post.
 - Typography comes from `.prose-article` in `globals.css` (works in light and dark through tokens).
-- New block type: add it to `PostBlock`, handle it in `molecules/ArticleBody.tsx`, style it under
+- New block type: add it to `PostBlock`, handle it in `modules/blog/components/ArticleBody.tsx`, style it under
   `.prose-article` if needed.
-- Moving to MDX later: `ArticleTemplate` takes any `children`, so render MDX inside
+- Moving to MDX later: `ArticlePage` takes any `children`, so render MDX inside
   `<div className="prose-article">` and keep the template unchanged.
 
 ## SEO

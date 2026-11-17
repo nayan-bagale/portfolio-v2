@@ -1,5 +1,5 @@
 import type { Role } from "@/content/types";
-import { PillList } from "./PillList";
+import { PillList } from "@/components/ui";
 
 /** One job in the experience list. */
 export function RoleCard({ role, index }: { role: Role; index: number }) {

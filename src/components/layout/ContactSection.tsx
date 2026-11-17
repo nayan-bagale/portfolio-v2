@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Accent, Button, Kicker } from "@/components/atoms";
+import { Accent, Button, Kicker } from "@/components/ui";
 import { Reveal } from "@/components/motion";
 import { contact } from "@/content/home";
 import { contactHref, site } from "@/content/site";

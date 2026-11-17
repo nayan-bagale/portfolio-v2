@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ArticleBody } from "@/components/molecules";
-import { ArticleTemplate } from "@/components/templates";
+import { ArticleBody, ArticlePage } from "@/modules/blog";
 import { getLocalPosts, getPostBySlug } from "@/content/posts";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -26,8 +25,8 @@ export default async function BlogPostPage({ params }: Props) {
   if (!post?.body) notFound();
 
   return (
-    <ArticleTemplate title={post.title} topic={post.topic} date={post.date} summary={post.summary}>
+    <ArticlePage title={post.title} topic={post.topic} date={post.date} summary={post.summary}>
       <ArticleBody blocks={post.body} />
-    </ArticleTemplate>
+    </ArticlePage>
   );
 }

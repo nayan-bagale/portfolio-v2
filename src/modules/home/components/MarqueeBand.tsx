@@ -1,4 +1,4 @@
-import { Marquee } from "@/components/molecules";
+import { Marquee } from "./Marquee";
 import { marquee } from "@/content/home";
 
 /** Two strips scrolling in opposite directions: tech stack, then companies. */

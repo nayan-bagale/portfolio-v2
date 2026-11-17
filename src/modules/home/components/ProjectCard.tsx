@@ -1,7 +1,7 @@
 import { Spotlight } from "@/components/motion";
 import type { Project } from "@/content/types";
 import { cn } from "@/lib/cn";
-import { PillList } from "./PillList";
+import { PillList } from "@/components/ui";
 
 const linkClass =
   "border-b border-transparent font-mono text-[11px] font-medium tracking-[0.12em] text-accent uppercase transition-colors duration-300 hover:border-accent";

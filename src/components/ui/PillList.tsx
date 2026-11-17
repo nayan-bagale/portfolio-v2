@@ -1,4 +1,4 @@
-import { Pill, type PillTone } from "@/components/atoms";
+import { Pill, type PillTone } from "./Pill";
 import { cn } from "@/lib/cn";
 
 /** Wrapping row of pills, for a tech stack. */
