@@ -3,6 +3,7 @@ import {
   ExperienceSection,
   Hero,
   MarqueeBand,
+  OpenSourceSection,
   ProjectsSection,
   SkillsSection,
   TaglineSection,
@@ -19,6 +20,7 @@ export function HomePage() {
       <ExperienceSection />
       <SkillsSection />
       <ProjectsSection />
+      <OpenSourceSection />
       <WritingSection />
       <ContactSection />
     </>

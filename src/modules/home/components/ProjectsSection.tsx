@@ -6,7 +6,7 @@ import { projects } from "@/content/projects";
 
 export function ProjectsSection() {
   return (
-    <section id="projects" className="py-28">
+    <section id="projects" className="py-24">
       <Container>
         <SectionHeader
           kicker="Side projects"

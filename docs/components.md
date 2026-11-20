@@ -70,6 +70,7 @@ Sections:
 | `ExperienceSection` | `content/experience.ts`             | `id="work"`                                              |
 | `SkillsSection`     | `content/skills.ts`                 | `id="skills"`                                            |
 | `ProjectsSection`   | `content/projects.ts`               | `id="projects"`                                          |
+| `OpenSourceSection` | `content/open-source.ts`            | `id="open-source"`; PR timeline fills on scroll (`.oss-*` CSS, scroll timeline, no JS) |
 | `WritingSection`    | `content/posts.ts`                  | `id="writing"`; prop `limit` (default 3)                 |
 
 Page: `HomePage` (`src/modules/home/HomePage.tsx`), route `/`, no props; defines section order.

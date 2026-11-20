@@ -84,7 +84,7 @@ most one `<Accent>` phrase, placed at the end where possible.
   buttons, pills, chips of the nav `rounded-full`; floating chip `rounded-2xl`.
 - Borders are 1px `border-line`. Depth comes from the `bg` → `card` tone shift, not heavy shadows.
 - Page gutter and max width: `<Container>` (`max-w-[1200px] px-6`; `size="narrow"` = 760px for reading).
-- Section rhythm: `py-28`. Section header to content: `mb-14`. Card grids: `gap-4`. Card padding: `p-7`–`p-10`.
+- Section rhythm: home content sections `py-24` (96px each side, 192px between two sections). Section header to content: `mb-14`. Card grids: `gap-4`. Card padding: `p-7`–`p-10`.
 - First section of a page: `pt-36`/`pt-40` to clear the fixed header.
 
 Breakpoints:
@@ -101,7 +101,8 @@ Keep card grids at 2 columns until there is room for cards at least ~270px wide.
 
 ## Motion
 
-- Easing: `ease-expo` = `cubic-bezier(0.22, 1, 0.36, 1)` for everything.
+- Easing: `ease-expo` = `cubic-bezier(0.22, 1, 0.36, 1)` for everything. Exception: CSS scroll timelines
+  (`animation-timeline`) use `linear`, since their progress follows the scroll position.
 - Durations: colour 300ms; small transforms 400ms; card lift 500ms; reveals 900ms.
 - Tailwind v4 note: `translate`, `rotate` and `scale` are separate CSS properties. Use `transition`
   (covers them) or list them (`transition-[opacity,translate]`); `transition-transform` alone also works
@@ -119,6 +120,7 @@ Keep card grids at 2 columns until there is room for cards at least ~270px wide.
 | Marquee                        | `<Marquee>`; `animate-marquee` / `animate-marquee-reverse`            |
 | Floating chip                  | `animate-float`                                                       |
 | Status dot                     | `<PulseDot>` (`animate-pulse-dot`)                                    |
+| Timeline line fills on scroll  | `.oss-track` > `.oss-fill` + `.oss-dot` with `--r` (see `OpenSourceSection`) |
 
 `prefers-reduced-motion` is handled globally in `globals.css`: animations are cut to an instant and
 reveals keep only the fade. New animations must degrade the same way.

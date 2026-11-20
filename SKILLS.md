@@ -27,7 +27,7 @@ Follow these recipes so new work matches the existing system. Background referen
 - Shape: cards `rounded-3xl border`, buttons and pills `rounded-full`.
 - Motion: `transition duration-500 ease-expo` on cards, `duration-300 ease-expo` on colour changes.
   Hover lift is `hover:-translate-y-1` or `-translate-y-1.5`.
-- Layout: wrap section content in `<Container>`. Sections use `py-28`. Grids use `gap-4`.
+- Layout: wrap section content in `<Container>`. Home content sections use `py-24`. Grids use `gap-4`.
 
 ## Recipe: new component
 
@@ -46,7 +46,7 @@ Follow these recipes so new work matches the existing system. Background referen
    ```tsx
    export function ExampleSection() {
      return (
-       <section id="example" className="py-28">
+       <section id="example" className="py-24">
          <Container>
            <SectionHeader kicker="Example" title={<>Plain words <Accent>accent words.</Accent></>} />
            <div className="grid gap-4 md:grid-cols-2">

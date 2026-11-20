@@ -6,7 +6,7 @@ import { skills } from "@/content/skills";
 
 export function SkillsSection() {
   return (
-    <section id="skills" className="py-28">
+    <section id="skills" className="py-24">
       <Container>
         <SectionHeader
           kicker="Skills"

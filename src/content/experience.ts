@@ -57,13 +57,4 @@ export const experience: Role[] = [
     ],
     stack: ["Next.js", "React", "PostgreSQL", "Drizzle ORM"],
   },
-  {
-    period: "Ongoing",
-    type: "Open source",
-    title: "Contributor",
-    company: "Cal.com",
-    summary:
-      "Contributing fixes and features to Cal.com, an open source scheduling platform with a large TypeScript codebase.",
-    stack: ["TypeScript", "Next.js"],
-  },
 ];

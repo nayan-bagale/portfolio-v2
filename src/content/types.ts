@@ -41,6 +41,21 @@ export type Project = {
   featured?: boolean;
 };
 
+export type PullRequest = {
+  /** PR number without the hash, such as 12345. */
+  number: number;
+  title: string;
+  href: string;
+};
+
+/** One open source project and the PRs contributed to it. */
+export type OpenSourceProject = {
+  name: string;
+  /** Repository page, such as "https://github.com/calcom/cal.com". */
+  repo: string;
+  pullRequests: PullRequest[];
+};
+
 /** One block of a post written in this project. */
 export type PostBlock =
   | { type: "paragraph"; text: string }

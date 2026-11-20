@@ -206,6 +206,25 @@
   }
 }
 
+@keyframes oss-fill {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+@keyframes oss-dot {
+  from {
+    background-color: var(--card);
+    border-color: var(--line-strong);
+  }
+  to {
+    background-color: var(--accent);
+    border-color: var(--accent);
+  }
+}
+
 @layer components {
   /* Hero headline: each line slides up from behind a mask. */
   .line-mask {
@@ -250,6 +269,31 @@
   }
   [data-js] .tagline-word.is-on {
     opacity: 1;
+  }
+
+  /* Open source timeline: the line and dots fill while scrolling.
+     Pure CSS scroll timeline. Without support the line stays filled.
+     The line starts filling when the list's top reaches about 90% of the viewport (just after it
+     appears at the bottom of the screen) and is full when its bottom reaches about 45%, just above the centre. Each dot uses the same timeline and fills when the
+     line reaches it (--r is the dot's position, 0 for the first, 1 for the last).
+     Linear on purpose: progress follows the scroll position, it is not a timed transition. */
+  .oss-track {
+    view-timeline-name: --oss;
+  }
+  .oss-fill {
+    transform-origin: top;
+  }
+  @supports (animation-timeline: view()) {
+    .oss-fill {
+      animation: oss-fill linear both;
+      animation-timeline: --oss;
+      animation-range: cover 8% cover 62%;
+    }
+    .oss-dot {
+      animation: oss-dot linear both;
+      animation-timeline: --oss;
+      animation-range: cover calc(5% + 54% * var(--r, 0)) cover calc(8% + 54% * var(--r, 0));
+    }
   }
 
   /* Card glow that follows the cursor. */
@@ -403,5 +447,9 @@
   }
   [data-js] .reveal {
     transform: none;
+  }
+  .oss-fill,
+  .oss-dot {
+    animation: none !important;
   }
 }

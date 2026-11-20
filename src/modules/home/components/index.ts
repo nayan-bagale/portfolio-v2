@@ -4,6 +4,7 @@ export { FloatingChip } from "./FloatingChip";
 export { Hero } from "./Hero";
 export { Marquee } from "./Marquee";
 export { MarqueeBand } from "./MarqueeBand";
+export { OpenSourceSection } from "./OpenSourceSection";
 export { ProjectCard } from "./ProjectCard";
 export { ProjectsSection } from "./ProjectsSection";
 export { RoleCard } from "./RoleCard";

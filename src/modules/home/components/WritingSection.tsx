@@ -7,7 +7,7 @@ import { posts } from "@/content/posts";
 /** Latest articles on the home page, with a link to the full blog. */
 export function WritingSection({ limit = 3 }: { limit?: number }) {
   return (
-    <section id="writing" className="py-28">
+    <section id="writing" className="py-24">
       <Container>
         <SectionHeader
           kicker="Writing"

@@ -71,6 +71,8 @@ The only allowed exception is `themeColor` in `src/app/layout.tsx`, which cannot
 8. **Motion:** easing is always `ease-expo`. Never use the default `ease`/`linear` for UI transitions.
    Scroll reveals use `<Reveal>`; do not attach scroll listeners for animation.
    One owner-approved exception: the nav underline in `SiteHeader` is tied to the scroll position (passive listener, rAF).
+   Owner-approved: CSS scroll timelines (`animation-timeline`, such as the `.oss-*` open source timeline) use
+   `linear`, because their progress follows the scroll position and is not a timed transition.
 9. **Internal links use `next/link`** (`Button` does this automatically for paths starting with `/`).
    External links get `target="_blank" rel="noopener noreferrer"`.
 10. **Accessibility is required:** visible focus (global `:focus-visible` is set), `aria-label` on icon-only
