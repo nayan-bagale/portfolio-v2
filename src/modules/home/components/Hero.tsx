@@ -4,7 +4,7 @@ import { SocialLinks } from "@/components/ui";
 import { CodeCard } from "./CodeCard";
 import { FloatingChip } from "./FloatingChip";
 import { hero } from "@/content/home";
-import { contactHref, socials } from "@/content/site";
+import { booking, socials } from "@/content/site";
 
 const delay = (ms: number) => ({ "--delay": `${ms}ms` }) as CSSProperties;
 
@@ -38,7 +38,7 @@ export function Hero() {
             {hero.intro}
           </p>
           <div className="fade-up mt-9 flex flex-wrap gap-3" style={delay(700)}>
-            <Button href={contactHref}>{hero.primaryCta}</Button>
+            <Button href={booking.href}>{hero.primaryCta}</Button>
             <Button href={hero.secondaryCta.href} variant="ghost" arrow="down">
               {hero.secondaryCta.label}
             </Button>

@@ -13,17 +13,16 @@ export const site = {
   availability: "Open to roles",
   /** Set your email to turn the contact buttons into mailto links. */
   email: "",
-  /** Placeholder. Replace with the real CV link. */
-  cvUrl: "https://example.com/nayan-bagale-cv.pdf",
-  footerNote: ["Software engineer in Pune, India.", "Building products from interface to infrastructure."],
+  cvUrl: "https://drive.google.com/file/d/1OrDa_mCZ-MFe_3-4Ym_PEAgod_k8GzI5/view?usp=sharing",
+  footerNote: ["Software engineer in India.", "Building products from interface to infrastructure."],
+  headerCta: "Book a call",
 } as const;
 
-/** Placeholders. Replace with the real profile links. */
 export const socials: SocialLink[] = [
-  { label: "GitHub", href: "https://github.com/your-username" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/your-username" },
-  { label: "X", href: "https://x.com/your-username" },
-  { label: "LeetCode", href: "https://leetcode.com/your-username" },
+  { label: "GitHub", href: "https://github.com/nayan-bagale" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/nayan-bagale" },
+  { label: "X", href: "https://x.com/nayan_bagale" },
+  { label: "LeetCode", href: "https://leetcode.com/u/nayan-bagale/" },
   { label: "CV", href: site.cvUrl },
 ];
 
@@ -34,5 +33,19 @@ export const nav: NavItem[] = [
   { label: "Writing", href: "/#writing" },
 ];
 
-/** Where "Start a conversation" and "Get in touch" point. */
-export const contactHref = site.email ? `mailto:${site.email}` : "/#contact";
+/** The /book page, where the hero "Book a call" button leads. Cal.com link: cal.com/<username>/<eventSlug>. */
+export const booking = {
+  href: "/book",
+  username: "nayan-bagale-1cuj1h",
+  eventSlug: "testing",
+  /** Without it the booker calls this site's own /atoms/... routes and gets 404. */
+  apiUrl: "https://api.cal.com/v2",
+  metaTitle: "Book a call",
+  metaDescription: "Pick a time to talk with Nayan Bagale about a role, a project or a collaboration.",
+  kicker: "Book a call",
+  title: { before: "Pick a time that ", accent: "works for you." },
+  intro: "Choose a slot below and the invite lands in your calendar.",
+};
+
+/** Where the header and contact section "Book a call" buttons point. */
+export const contactHref = booking.href;

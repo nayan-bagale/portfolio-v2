@@ -53,6 +53,42 @@
   color-scheme: dark;
 }
 
+/* Cal.com booker on /book: point its colour variables at our tokens so it follows both themes.
+   Cal redefines `--card`, `--accent` and other shadcn names inside `.calcom-atoms`, so the wrapper
+   (`.booking-embed`, in BookingEmbed) copies our tokens under `--site-*` names first. */
+.booking-embed {
+  --site-bg: var(--bg);
+  --site-card: var(--card);
+  --site-line: var(--line);
+  --site-line-strong: var(--line-strong);
+  --site-text: var(--text);
+  --site-body: var(--body);
+  --site-muted: var(--muted);
+  --site-accent: var(--accent);
+  --site-on-accent: var(--on-accent);
+}
+
+.booking-embed .calcom-atoms {
+  --cal-bg: var(--site-card);
+  --cal-bg-muted: var(--site-bg);
+  --cal-bg-subtle: var(--site-line);
+  --cal-bg-emphasis: var(--site-line-strong);
+  --cal-bg-inverted: var(--site-text);
+  --cal-text: var(--site-body);
+  --cal-text-emphasis: var(--site-text);
+  --cal-text-subtle: var(--site-muted);
+  --cal-text-muted: var(--site-muted);
+  --cal-text-inverted: var(--site-bg);
+  --cal-border: var(--site-line-strong);
+  --cal-border-subtle: var(--site-line);
+  --cal-border-muted: var(--site-line);
+  --cal-border-emphasis: var(--site-line-strong);
+  --cal-border-booker: var(--site-line);
+  --cal-brand: var(--site-accent);
+  --cal-brand-emphasis: var(--site-accent);
+  --cal-brand-text: var(--site-on-accent);
+}
+
 /* Expose the tokens to Tailwind: bg-card, text-muted, font-head, ... */
 @theme inline {
   --color-bg: var(--bg);
@@ -125,7 +161,12 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 96px;
+  }
+  /* Keep anchor targets clear of the fixed header. This is a margin on the targets, not
+     `scroll-padding-top` on html: Next.js counts that padding when it decides whether a new
+     page's top is visible, and with it the logo link to "/" scrolled the home page down. */
+  [id] {
+    scroll-margin-top: 96px;
   }
   body {
     background: var(--bg);

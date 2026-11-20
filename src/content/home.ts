@@ -10,7 +10,7 @@ export type CodeEntry = {
 };
 
 export const hero = {
-  eyebrow: "Software engineer · Pune, India",
+  eyebrow: "Software engineer · India",
   /** One inner array per line of the headline. */
   headline: [
     [{ text: "I build products" }],
@@ -20,7 +20,7 @@ export const hero = {
   ] as HeadlineSegment[][],
   intro:
     "I am Nayan, a full stack engineer with 2+ years of experience building scalable, fast, and reliable web applications that are easy to use and maintain with modern web technologies.",
-  primaryCta: "Start a conversation",
+  primaryCta: "Book a call",
   secondaryCta: { label: "See my work", href: "/#projects" },
   codeCard: {
     filename: "nayan.ts",
@@ -55,7 +55,7 @@ export const contact = {
   kicker: "Ready when you are",
   title: { before: "Let's build something ", accent: "exceptional." },
   text: "I would love to hear about your projects and how I could help. Want to collaborate, or just say hi? Reach out.",
-  primaryCta: "Start a conversation",
+  primaryCta: "Book a call",
   cvCta: "Download CV",
   photo: { src: "/nayan.jpg", alt: "Portrait of Nayan Bagale" },
 };

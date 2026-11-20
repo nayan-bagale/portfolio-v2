@@ -19,8 +19,7 @@ export const posts: Post[] = [
     topic: "JavaScript",
     summary:
       "Why many JavaScript developers like factory functions: they create objects without classes or the new keyword, which keeps code simpler and faster.",
-    // Placeholder. Replace with the real article link.
-    href: "https://example.com/blog/factory-functions-in-javascript",
+    href: "https://nayan-bagale.hashnode.dev/factory-functions-in-javascript",
   },
 ];
 

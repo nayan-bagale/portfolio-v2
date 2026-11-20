@@ -18,7 +18,6 @@ Import from the folder barrel: `import { Button, Pill } from "@/components/ui"`.
 | `PulseDot`     | `className`                                                                             | Green status dot                                              |
 | `SectionTitle` | `as: "h1" \| "h2"`, `className`, `children`                                             | Large heading; use `as="h1"` on non-home pages                |
 | `SocialLinks`  | `links: SocialLink[]`, `className`                                                      | Pill links, open in a new tab                                 |
-
 ## Motion (`src/components/motion`) — all client
 
 | Component    | Props                              | Notes                                                   |
@@ -33,11 +32,19 @@ Because `Reveal` adds a wrapper, cards inside grids should be `h-full`.
 
 | Component        | Data source                         | Notes                                                    |
 | ---------------- | ----------------------------------- | -------------------------------------------------------- |
-| `SiteHeader`     | `content/site.ts` (`nav`)           | Client. In `layout.tsx`. Active link from section ids    |
+| `SiteHeader`     | `content/site.ts` (`nav`)           | Client. In `layout.tsx`. One underline whose position is tied to the scroll: it sits under the link of the section crossing a line 35% down the screen and glides to the next link over the last 360px before that section arrives (owner-approved scroll listener, rAF, transform only). On `/blog` it sits under Writing |
 | `SiteFooter`     | `content/site.ts`                   | In `layout.tsx`                                          |
 | `BackToTop`      | none                                | Client. In `layout.tsx`                                  |
 | `ThemeToggle`    | none                                | Client. Sets `data-theme`, saves to localStorage         |
 | `ContactSection` | `content/home.ts` (`contact`)       | `id="contact"`; inverted surface with the portrait. Used by home and blog pages |
+
+## Book module (`src/modules/book`)
+
+Public entry: `import { BookingEmbed } from "@/modules/book"`. Used only by `src/app/book/page.tsx`.
+
+| Component      | Data source                   | Notes                                                                                     |
+| -------------- | ----------------------------- | ----------------------------------------------------------------------------------------- |
+| `BookingEmbed` | `content/site.ts` (`booking`) | Client. Cal.com `BookerEmbed` from `@calcom/atoms`. Imports Cal's global CSS, so keep it on this page only. Needs `apiUrl` or it calls this site's `/atoms` routes. Wrapped in `.booking-embed`; `globals.css` maps Cal's `--cal-*` colours to our tokens (through `--site-*`, because Cal redefines `--card`, `--accent`) so it follows light and dark |
 
 ## Home module (`src/modules/home`)
 

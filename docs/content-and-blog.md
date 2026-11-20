@@ -5,7 +5,7 @@ All text and data are in `src/content`. Components never contain copy. Types are
 
 | File            | Exports                                   | Edits you make here                                   |
 | --------------- | ----------------------------------------- | ----------------------------------------------------- |
-| `site.ts`       | `site`, `socials`, `nav`, `contactHref`   | Name, SEO title/description, email, CV, profile links, header links |
+| `site.ts`       | `site`, `socials`, `nav`, `booking`, `contactHref` | Name, SEO title/description, email, CV, profile links, header links and header button label, the /book page and its Cal.com link. `contactHref` (header and contact buttons) points to `/book` |
 | `home.ts`       | `hero`, `marquee`, `tagline`, `contact`   | Headline, intro, code card, marquee words, tagline, contact block |
 | `experience.ts` | `experience: Role[]`                      | Jobs, newest first                                    |
 | `skills.ts`     | `skills: SkillGroup[]`                    | Skill cards (`featured: true` fills one with accent)  |

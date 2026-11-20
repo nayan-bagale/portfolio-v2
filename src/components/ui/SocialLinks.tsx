@@ -4,7 +4,7 @@ import { cn } from "@/lib/cn";
 /** Row of small pill links to profiles. */
 export function SocialLinks({ links, className }: { links: SocialLink[]; className?: string }) {
   return (
-    <div className={cn("flex flex-wrap gap-2", className)}>
+    <div className={cn("flex flex-wrap items-start gap-2", className)}>
       {links.map((link) => (
         <a
           key={link.label}
